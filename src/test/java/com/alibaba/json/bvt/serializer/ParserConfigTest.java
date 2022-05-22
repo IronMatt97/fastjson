@@ -108,7 +108,6 @@ public class ParserConfigTest {
     }
     @Test
     public void test_1() {
-
         //ParserConfig config = new ParserConfig(Thread.currentThread().getContextClassLoader());
         //Model model = JSON.parseObject("{\"value\":123}", Model.class, 123);
         //Assert.assertEquals(123, model.value);

@@ -85,7 +85,6 @@ public class FieldOrderTest extends TestCase {
         String json = JSON.toJSONString(this.person);
         assertEquals(this.result, json);
     }
-
     public static class Person {
         private String name;
         private School school;
