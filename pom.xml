@@ -15,10 +15,19 @@
 
     <properties>
         <junit.version>4.13.1</junit.version>
+        <jacoco-maven-plugin.version>0.8.4</jacoco-maven-plugin.version>
         <gpg.skip>true</gpg.skip>
         <javadoc.skip>true</javadoc.skip>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jdk.version>1.6</jdk.version>
+        
+        <sonar.projectKey>ironmatt97:${project.groupId}:${project.artifactId}</sonar.projectKey>
+        <sonar.links.homepage>https://github.com/ironmatt97/fastjson</sonar.links.homepage>
+        <sonar.links.ci>https://travis-ci.com/ironmatt97/fastjson</sonar.links.ci>
+        <sonar.links.scm>https://github.com/ironmatt97/fastjson</sonar.links.scm>
+        <sonar.links.issue>https://github.com/ironmatt97/fastjson/issues</sonar.links.issue>
+        <aggregate.report.dir>tests/target/site/jacoco-aggregate/jacoco.xml</aggregate.report.dir>
+        
     </properties>
 
     <scm>
@@ -191,6 +200,31 @@
                     </execution>
                 </executions>
             </plugin>
+            
+            <plugin>
+            <groupId>org.sonarsource.scanner.maven</groupId>
+            <artifactId>sonar-maven-plugin</artifactId>
+            <version>3.6.0.1398</version>
+            </plugin>
+            <plugin>
+            <groupId>org.jacoco</groupId>
+            <artifactId>jacoco-maven-plugin</artifactId>
+            <version>0.8.4</version>
+            <executions>
+            <execution>
+            <id>prepare-agent</id>
+            <goals>
+              <goal>prepare-agent</goal>
+            </goals>
+            </execution>
+            <execution>
+            <id>report</id>
+            <goals>
+              <goal>report</goal>
+            </goals>
+            </execution>
+            </executions>
+            </plugin>
         </plugins>
     </build>
 
@@ -336,7 +370,7 @@
         <dependency>
             <groupId>org.jacoco</groupId>
             <artifactId>jacoco-maven-plugin</artifactId>
-            <version>0.7.6.201602180812</version>
+            <version>0.8.4</version>
             <scope>provided</scope>
         </dependency>
 
@@ -655,7 +689,7 @@
                         <!-- plugin docs: http://eclemma.org/jacoco/trunk/doc/ -->
                         <groupId>org.jacoco</groupId>
                         <artifactId>jacoco-maven-plugin</artifactId>
-                        <version>0.8.7</version>
+                        <version>0.8.4</version>
                         <executions>
                             <execution>
                                 <goals>
