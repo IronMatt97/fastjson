@@ -15,6 +15,7 @@ cache:
   
 addons:
   sonarcloud:
+    projectkey: "IronMatt97_fastjson"
     organization: "ironmatt97"
     token:
       secure: "**************************" # encrypted value of your token
