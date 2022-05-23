@@ -26,7 +26,8 @@
         <sonar.links.ci>https://travis-ci.com/ironmatt97/fastjson</sonar.links.ci>
         <sonar.links.scm>https://github.com/ironmatt97/fastjson</sonar.links.scm>
         <sonar.links.issue>https://github.com/ironmatt97/fastjson/issues</sonar.links.issue>
-        <aggregate.report.dir>tests/target/site/jacoco-aggregate/jacoco.xml</aggregate.report.dir>
+        <aggregate.report.dir>/target/site/jacoco/jacoco.xml</aggregate.report.dir>
+        <sonar.coverage.jacoco.xmlReportPaths>/target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
         
     </properties>
 
@@ -204,7 +205,7 @@
             <plugin>
             <groupId>org.sonarsource.scanner.maven</groupId>
             <artifactId>sonar-maven-plugin</artifactId>
-            <version>3.6.0.1398</version>
+            <version>3.9.1.2184</version>
             </plugin>
             <plugin>
             <groupId>org.jacoco</groupId>
@@ -670,6 +671,12 @@
             <version>4.10</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+  <groupId>org.sonarsource.scanner.maven</groupId>
+  <artifactId>sonar-maven-plugin</artifactId>
+  <version>3.9.1.2184</version>
+  <type>maven-plugin</type>
+</dependency>
     </dependencies>
 
     <profiles>
@@ -707,6 +714,49 @@
                     </plugin>
                 </plugins>
             </build>
+        </profile>
+        <profile>
+  <id>coverage</id>
+  <build>
+   <plugins>
+    <plugin>
+      <groupId>org.jacoco</groupId>
+     <artifactId>jacoco-maven-plugin</artifactId>
+      <version>0.8.4</version>
+      <executions>
+        <execution>
+          <id>prepare-agent</id>
+          <goals>
+            <goal>prepare-agent</goal>
+          </goals>
+        </execution>
+        <execution>
+          <id>report</id>
+          <goals>
+            <goal>report</goal>
+          </goals>
+          <configuration>
+            <formats>
+              <format>XML</format>
+            </formats>
+          </configuration>
+        </execution>
+      </executions>
+    </plugin>
+   </plugins>
+  </build>
+</profile>
+<profile>
+            <id>sonar</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <!-- Optional URL to server. Default value is http://localhost:9000 -->
+                <sonar.host.url>
+                  https://sonarcloud.io
+                </sonar.host.url>
+            </properties>
         </profile>
 
     </profiles>
