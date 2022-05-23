@@ -15,11 +15,10 @@ cache:
   
 addons:
   sonarcloud:
-    projectkey: "IronMatt97_fastjson"
     organization: "ironmatt97"
     token:
-      secure: "**************************" # encrypted value of your token
+      secure: "qrLMcuxvNJMZM4wsbAN27piJjXVq7x8nHimSCBYfsrF6qtRg7K9YCD2w5UcO3RzddjKClMpiaLc1wvTvX2BsH+prg8YfhLWmy+jmnGhARs/v91LAQgHOxIBa5G6z0YvTBFXJIPniH1nimawb/3CtL3jB94GNrUb2iho9nuERoRveZOVRt2zjpHTuAZhP9WPcsTmC+VdAi6xzbiQr4xoo8kfZ2aCbnK6Lxyv08caos5Zaj2ULNA3LK8uosPzNJU+e4PrPDApmfOEjM/z5m96FnAoipC4EJWtq/hVFiQYb8pH1XmIVpLdUb3FILHkIgbBV1NbAMgWGToupg6Vi4q38Wy8GhBulxvKX2DiI8ispi1gZZuyxPQarHgu72RAXwT+ZKfNorzY0LRyQ2cUb6a96D38mtEtsolhUdPBOpCEXKL036Wf/7SRJJu8Dw4+gYssS+eHew37ww9U4WZE+d/1YRnFkTy8hjWTfZ5UGpvF8Z5NNNyxRVNMY0xDZ2eIQaBdkQFcvM9eJ7kDXBvNPwQXdbjHWq0kiPjeOp2D34vl4ord+cBxAsV6LdKjr3WJ3Q/T5Hm6XHRmUua2+SxpTfV4+SMkH1JHzcl2dAqqTTqRxcUYDTCx0/1LXd21ImyrdL3kblrVxdxpjz7MekccmnsvlIw8ICGFcO19ntNq859VMr2A=" # encrypted value of your token
 
 script:
   # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
-  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -X -Pcoverage -Dsonar.host.url=https://sonarcloud.io -Dsonar.coverage.jacoco.xmlReportPaths=/target/site/jacoco/jacoco.xml -Dsonar.organization=ironmatt97 -Dsonar.projectkey=IronMatt97_fastjson
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
